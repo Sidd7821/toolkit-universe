@@ -7,6 +7,9 @@ const components: Record<string, ReturnType<typeof lazy>> = {
   "word-counter": lazy(() => import("@/tools/WordCounter")),
   "json-formatter": lazy(() => import("@/tools/JsonFormatter")),
   "ai-assist": lazy(() => import("@/tools/AIAssist")),
+  "image-compressor": lazy(() => import("@/tools/ImageCompressor")),
+  "password-generator": lazy(() => import("@/tools/PasswordGenerator")),
+  "pdf-merger": lazy(() => import("@/tools/PDFMerger")),
 };
 
 const Fallback = () => (

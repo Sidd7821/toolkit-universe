@@ -12,9 +12,10 @@ interface ChatMessage {
 }
 
 const STORAGE_KEY = "gemini_api_key";
+const DEFAULT_API_KEY = "AIzaSyDg4-aSW_VQwwaIR7NVRJrtibikyrp0zFE";
 
 const AIAssist = () => {
-  const [apiKey, setApiKey] = useState<string>("");
+  const [apiKey, setApiKey] = useState<string>(DEFAULT_API_KEY);
   const [input, setInput] = useState<string>("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [loading, setLoading] = useState(false);
@@ -22,7 +23,12 @@ const AIAssist = () => {
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) setApiKey(saved);
+    if (saved) {
+      setApiKey(saved);
+    } else {
+      // Set default API key if none is saved
+      localStorage.setItem(STORAGE_KEY, DEFAULT_API_KEY);
+    }
   }, []);
 
   useEffect(() => {
@@ -47,7 +53,7 @@ const AIAssist = () => {
     const prompt = input.trim();
     if (!prompt) return;
     if (!apiKey) {
-      toast({ title: "Missing Gemini API key", description: "Add your key in Settings.", });
+      toast({ title: "Missing Gemini API key", description: "Add your key in Settings." });
       return;
     }
 
@@ -66,7 +72,11 @@ const AIAssist = () => {
       setMessages((prev) => [...prev, { role: "assistant", content: text }]);
     } catch (err: any) {
       console.error(err);
-      toast({ title: "Generation failed", description: err?.message || "Please try again." });
+      toast({ 
+        title: "Generation failed", 
+        description: err?.message || "Please check your API key and try again.",
+        variant: "destructive"
+      });
     } finally {
       setLoading(false);
     }
@@ -81,12 +91,21 @@ const AIAssist = () => {
 
   const handleClear = () => setMessages([]);
 
+  const handleUseDefault = () => {
+    setApiKey(DEFAULT_API_KEY);
+    localStorage.setItem(STORAGE_KEY, DEFAULT_API_KEY);
+    toast({ title: "Default API key set", description: "Using the provided Gemini API key." });
+  };
+
   return (
     <section className="grid gap-6 lg:grid-cols-3">
       <article className="lg:col-span-2 grid gap-4">
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-xl">AI Assist</CardTitle>
+            <CardTitle className="text-xl">AI Assist - Gemini 1.5 Flash</CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Chat with Google's Gemini AI for writing, coding, analysis, and creative tasks.
+            </p>
           </CardHeader>
           <CardContent>
             <div
@@ -95,35 +114,60 @@ const AIAssist = () => {
               aria-live="polite"
             >
               {messages.length === 0 ? (
-                <p className="text-sm text-muted-foreground">
-                  Ask anything. Press Cmd/Ctrl+Enter to send.
-                </p>
+                <div className="text-sm text-muted-foreground space-y-2">
+                  <p className="font-medium">Welcome to AI Assist! Try asking:</p>
+                  <ul className="list-disc pl-5 space-y-1">
+                    <li>"Write a professional email about project delays"</li>
+                    <li>"Explain quantum computing in simple terms"</li>
+                    <li>"Create a Python function to sort a list"</li>
+                    <li>"Generate creative story ideas for a sci-fi novel"</li>
+                  </ul>
+                  <p className="text-xs mt-3">Press Cmd/Ctrl+Enter to send quickly.</p>
+                </div>
               ) : (
                 <div className="space-y-3">
                   {messages.map((m, i) => (
-                    <div key={i} className="rounded-md p-3 border border-border bg-card">
-                      <div className="text-xs uppercase tracking-wide text-muted-foreground mb-1">{m.role}</div>
-                      <div className="prose prose-sm dark:prose-invert whitespace-pre-wrap">{m.content}</div>
+                    <div key={i} className={`rounded-md p-3 border border-border ${
+                      m.role === 'user' ? 'bg-primary/5 ml-8' : 'bg-card mr-8'
+                    }`}>
+                      <div className="text-xs uppercase tracking-wide text-muted-foreground mb-1 font-medium">
+                        {m.role === 'user' ? 'You' : 'Gemini'}
+                      </div>
+                      <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+                        {m.content}
+                      </div>
                     </div>
                   ))}
+                  {loading && (
+                    <div className="rounded-md p-3 border border-border bg-card mr-8">
+                      <div className="text-xs uppercase tracking-wide text-muted-foreground mb-1 font-medium">
+                        Gemini
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="animate-spin h-4 w-4 border-2 border-primary border-t-transparent rounded-full"></div>
+                        <span className="text-sm text-muted-foreground">Thinking...</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
 
             <div className="mt-4 grid gap-2">
               <Textarea
-                placeholder="Write an email apologizing for a delay…"
+                placeholder="Ask me anything... I can help with writing, coding, analysis, creative tasks, and more!"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                aria-label="Prompt"
+                aria-label="Chat with AI"
+                rows={3}
               />
               <div className="flex items-center gap-2">
-                <Button onClick={handleSend} disabled={!canSend}>
-                  {loading ? "Generating…" : "Send"}
+                <Button onClick={handleSend} disabled={!canSend} variant="hero">
+                  {loading ? "Generating..." : "Send Message"}
                 </Button>
                 <Button type="button" variant="outline" onClick={handleClear} disabled={messages.length === 0 || loading}>
-                  Clear
+                  Clear Chat
                 </Button>
                 <span className="ml-auto text-xs text-muted-foreground">Model: {modelId}</span>
               </div>
@@ -135,25 +179,48 @@ const AIAssist = () => {
       <aside className="grid gap-4">
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-base">Settings</CardTitle>
+            <CardTitle className="text-base">API Configuration</CardTitle>
           </CardHeader>
           <CardContent className="grid gap-3">
             <label className="text-sm font-medium" htmlFor="gemini-key">Gemini API Key</label>
             <Input
               id="gemini-key"
               type="password"
-              placeholder="AIza…"
+              placeholder="AIza..."
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               aria-describedby="gemini-help"
             />
             <p id="gemini-help" className="text-xs text-muted-foreground">
-              Your key is stored locally in your browser (never sent to our servers).
+              Your API key is stored locally in your browser and never sent to our servers.
             </p>
-            <div className="flex gap-2">
-              <Button size="sm" onClick={handleSaveKey}>Save key</Button>
-              <Button size="sm" variant="outline" onClick={() => { setApiKey(""); localStorage.removeItem(STORAGE_KEY); }}>Remove</Button>
+            <div className="flex gap-2 flex-wrap">
+              <Button size="sm" onClick={handleSaveKey}>Save Key</Button>
+              <Button size="sm" variant="outline" onClick={handleUseDefault}>Use Default</Button>
+              <Button size="sm" variant="outline" onClick={() => { 
+                setApiKey(""); 
+                localStorage.removeItem(STORAGE_KEY); 
+                toast({ title: "API key removed", description: "Cleared from local storage." });
+              }}>
+                Remove
+              </Button>
             </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base">Features</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="text-sm list-disc pl-5 space-y-1 text-muted-foreground">
+              <li>Creative writing and storytelling</li>
+              <li>Code generation and debugging</li>
+              <li>Text analysis and summarization</li>
+              <li>Language translation</li>
+              <li>Question answering</li>
+              <li>Educational explanations</li>
+            </ul>
           </CardContent>
         </Card>
 
@@ -163,9 +230,10 @@ const AIAssist = () => {
           </CardHeader>
           <CardContent>
             <ul className="text-sm list-disc pl-5 space-y-1 text-muted-foreground">
-              <li>Use Cmd/Ctrl+Enter to send quickly.</li>
-              <li>Ask for structured outputs (JSON, bullet lists).</li>
-              <li>Your API key stays in local storage only.</li>
+              <li>Use Cmd/Ctrl+Enter to send quickly</li>
+              <li>Be specific in your requests for better results</li>
+              <li>Ask for structured outputs (JSON, lists, tables)</li>
+              <li>Request examples or step-by-step explanations</li>
             </ul>
           </CardContent>
         </Card>
