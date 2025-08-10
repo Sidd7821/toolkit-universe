@@ -6,6 +6,7 @@ import { TOOLS } from "@/data/tools";
 const components: Record<string, ReturnType<typeof lazy>> = {
   "word-counter": lazy(() => import("@/tools/WordCounter")),
   "json-formatter": lazy(() => import("@/tools/JsonFormatter")),
+  "ai-assist": lazy(() => import("@/tools/AIAssist")),
 };
 
 const Fallback = () => (

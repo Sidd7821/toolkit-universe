@@ -46,4 +46,12 @@ export const TOOLS: ToolMeta[] = [
     isFeatured: true,
   },
   // More tools coming soon...
+  {
+    slug: 'ai-assist',
+    name: 'AI Assist',
+    shortDescription: 'Chat with Gemini 1.5 Flash for writing, code, and ideas.',
+    category: 'ai',
+    tags: ['ai', 'chat', 'gemini'],
+    isFeatured: true,
+  },
 ];
