@@ -9,6 +9,8 @@ import NotFound from "./pages/NotFound";
 import Tools from "./pages/Tools";
 import ToolPage from "./pages/ToolPage";
 import CategoryPage from "./pages/CategoryPage";
+import Categories from "./pages/Categories";
+import Upgrade from "./pages/Upgrade";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,8 @@ const App = () => (
             <Route path="/tools" element={<Tools />} />
             <Route path="/tool/:slug" element={<ToolPage />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/upgrade" element={<Upgrade />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
