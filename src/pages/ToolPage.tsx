@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { useParams } from "react-router-dom";
 import Seo from "@/components/Seo";
 import { TOOLS } from "@/data/tools";
+import { Hourglass } from "lucide-react";
 
 const components: Record<string, ReturnType<typeof lazy>> = {
   "word-counter": lazy(() => import("@/tools/WordCounter")),
@@ -47,6 +48,39 @@ const components: Record<string, ReturnType<typeof lazy>> = {
   "lorem-picsum": lazy(() => import("@/tools/LoremPicsumImageGenerator")),
   "color-palette": lazy(() => import("@/tools/ColorPaletteGenerator")),
   "favicon-generator": lazy(() => import("@/tools/FaviconGenerator")),
+  // New utility tools
+  "random-number": lazy(() => import("@/tools/RandomNumberGenerator")),
+  "barcode-generator": lazy(() => import("@/tools/BarcodeGenerator")),
+  "stopwatch": lazy(() => import("@/tools/Stopwatch")),
+  "world-clock": lazy(() => import("@/tools/WorldClock")),
+  "weather-app": lazy(() => import("@/tools/WeatherApp")),
+  "ip-finder": lazy(() => import("@/tools/IPAddressFinder")),
+  "whois-lookup": lazy(() => import("@/tools/WHOISLookup")),
+  // New utility tools
+  "dns-lookup": lazy(() => import("@/tools/DNSLookup")),
+  "ping-speed-test": lazy(() => import("@/tools/PingSpeedTest")),
+  "clipboard-manager": lazy(() => import("@/tools/ClipboardManager")),
+  // New fun tools
+  "trivia-quiz-maker": lazy(() => import("@/tools/TriviaQuizMaker")),
+  "spin-the-wheel": lazy(() => import("@/tools/SpinTheWheel")),
+  // SEO tools
+  "meta-generator": lazy(() => import("@/tools/MetaTagGenerator")),
+  "meta-extractor": lazy(() => import("@/tools/MetaTagExtractor")),
+  "sitemap-generator": lazy(() => import("@/tools/XMLSitemapGenerator")),
+  "robots-generator": lazy(() => import("@/tools/RobotsTxtGenerator")),
+  "keyword-density-analyzer": lazy(() => import("@/tools/KeywordDensityAnalyzer")),
+  "broken-link-checker": lazy(() => import("@/tools/BrokenLinkChecker")),
+  "google-serp-preview": lazy(() => import("@/tools/GoogleSERPPreview")),
+  "website-speed-test": lazy(() => import("@/tools/WebsiteSpeedTest")),
+  "mobile-friendly": lazy(() => import("@/tools/MobileFriendlyTest")),
+  "backlink-checker": lazy(() => import("@/tools/BacklinkChecker")),
+  // Language & Writing tools
+  "grammar-checker": lazy(() => import("@/tools/GrammarChecker")),
+  "plagiarism-checker": lazy(() => import("@/tools/PlagiarismChecker")),
+  "paraphrase-tool": lazy(() => import("@/tools/ParaphraseTool")),
+  "readability-checker": lazy(() => import("@/tools/ReadabilityChecker")),
+  "language-translator": lazy(() => import("@/tools/LanguageTranslator")),
+  "dictionary-thesaurus": lazy(() => import("@/tools/DictionaryThesaurus")),
 };
 
 const Fallback = () => (
@@ -89,8 +123,25 @@ const ToolPage = () => {
       <h1 className="text-3xl font-bold mb-4">{meta.name}</h1>
       <p className="text-muted-foreground mb-6">{meta.shortDescription}</p>
       <Suspense fallback={<Fallback />}>
-        {Comp ? <Comp /> : <p className="text-sm text-muted-foreground">Work in progress…</p>}
-      </Suspense>
+  {Comp ? (
+    <Comp />
+  ) : (
+    <div className="flex flex-col items-center justify-center p-12 border rounded-2xl bg-gradient-to-br from-muted/50 to-muted shadow-sm text-center max-w-xl mx-auto">
+      <div className="p-4 rounded-full bg-primary/10 text-primary mb-4">
+        <Hourglass size={36} />
+      </div>
+      <h2 className="text-2xl font-bold mb-2">Coming Soon</h2>
+      <p className="text-muted-foreground max-w-md">
+        We’re crafting the{" "}
+        <span className="font-medium">{meta.name}</span> tool to make your
+        workflow even better. Check back soon — exciting things are on the way!
+      </p>
+      <div className="mt-6 px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium shadow hover:shadow-md transition">
+        Stay Tuned
+      </div>
+    </div>
+  )}
+</Suspense>
     </main>
   );
 };
