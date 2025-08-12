@@ -52,6 +52,7 @@
     "gif.js": "^0.2.0",
     "gif.js.optimized": "^1.0.1",
     "input-otp": "^1.4.2",
+    "jsbarcode": "^3.12.1",
     "jspdf": "^3.0.1",
     "jsqr": "^1.4.0",
     "lucide-react": "^0.462.0",
