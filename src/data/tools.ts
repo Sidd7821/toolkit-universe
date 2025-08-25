@@ -36,11 +36,66 @@ export const CATEGORIES: CategoryMeta[] = [
   { slug: 'file', name: 'File Management', description: 'File compression, conversion, and management tools.', icon: 'FolderOpen' },
   { slug: 'data', name: 'Data & Analytics', description: 'Data processing and analytics tools.', icon: 'BarChart3' },
   { slug: 'design', name: 'Design & Creative', description: 'Creative design and graphics tools.', icon: 'Palette' },
+  { slug: 'typography', name: 'Typography & Fonts', description: 'Font preview and typography tools.', icon: 'Type' },
   { slug: 'language', name: 'Language & Writing', description: 'Writing assistance and language tools.', icon: 'PenTool' },
   { slug: 'utility', name: 'Utility & Everyday', description: 'General utility and everyday tools.', icon: 'Wrench' },
 ];
 
 export const TOOLS: ToolMeta[] = [
+  // File Management Tools
+  {
+    slug: 'file-splitter-joiner',
+    name: 'File Splitter & Joiner',
+    shortDescription: 'Split large files into smaller chunks and rejoin them later.',
+    category: 'file',
+    tags: ['file', 'split', 'join', 'chunk'],
+  },
+  // Design & Creative Tools
+  {
+    slug: 'gradient-generator',
+    name: 'Gradient Generator',
+    shortDescription: 'Create beautiful CSS gradients for your website.',
+    category: 'design',
+    tags: ['css', 'gradient', 'design', 'color'],
+  },
+  {
+    slug: 'heatmap-generator',
+    name: 'Heatmap Generator',
+    shortDescription: 'Generate customizable heatmaps from your data.',
+    category: 'data',
+    tags: ['heatmap', 'visualization', 'data', 'chart'],
+  },
+  // SEO & Web Tools
+  {
+    slug: 'https-checker',
+    name: 'HTTPS Checker',
+    shortDescription: 'Verify website security and SSL certificate status.',
+    category: 'seo',
+    tags: ['https', 'ssl', 'security', 'website'],
+  },
+  // Social Media Tools
+  {
+    slug: 'instagram-hashtag-generator',
+    name: 'Instagram Hashtag Generator',
+    shortDescription: 'Generate relevant hashtags for Instagram posts.',
+    category: 'social',
+    tags: ['instagram', 'hashtag', 'social media', 'marketing'],
+  },
+  {
+    slug: 'instagram-story-templates',
+    name: 'Instagram Story Templates',
+    shortDescription: 'Create beautiful Instagram stories with customizable templates.',
+    category: 'social',
+    tags: ['instagram', 'story', 'template', 'social media'],
+  },
+  // E-Commerce & Business Tools
+  {
+    slug: 'invoice-generator',
+    name: 'Invoice Generator',
+    shortDescription: 'Create professional invoices for your business.',
+    category: 'ecommerce',
+    tags: ['invoice', 'business', 'billing', 'finance'],
+  },
   // Image & Media Tools
   {
     slug: 'image-compressor',
@@ -133,16 +188,16 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'audio-joiner',
     name: 'Audio Joiner',
-    shortDescription: 'Merge multiple audio files into one.',
+    shortDescription: 'Merge multiple audio files into one seamless track with drag-and-drop reordering.',
     category: 'video-audio',
-    tags: ['audio', 'merge', 'join'],
+    tags: ['audio', 'merge', 'join', 'combine'],
   },
   {
     slug: 'audio-cutter',
     name: 'Audio Cutter',
-    shortDescription: 'Trim audio files online.',
+    shortDescription: 'Trim and cut audio files online with precision timing controls.',
     category: 'video-audio',
-    tags: ['audio', 'cut', 'trim'],
+    tags: ['audio', 'cut', 'trim', 'edit'],
   },
   {
     slug: 'voice-to-text',
@@ -168,9 +223,9 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'noise-remover',
     name: 'Audio Noise Remover',
-    shortDescription: 'Clean background noise from audio files.',
+    shortDescription: 'Clean background noise from audio files using advanced filtering techniques.',
     category: 'video-audio',
-    tags: ['audio', 'noise', 'clean'],
+    tags: ['audio', 'noise', 'clean', 'filter'],
   },
   {
     slug: 'audio-normalizer',
@@ -417,25 +472,26 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'ai-article-writer',
     name: 'AI Article Writer',
-    shortDescription: 'Generate SEO-friendly articles.',
+    shortDescription: 'Generate SEO-friendly articles with customizable parameters.',
     category: 'ai',
-    tags: ['ai', 'article', 'writing'],
-    isPremium: true,
+    tags: ['ai', 'article', 'writing', 'seo'],
+    isFeatured: true,
   },
   {
     slug: 'ai-image-generator',
     name: 'AI Image Generator',
-    shortDescription: 'Create images from text prompts.',
+    shortDescription: 'Generate detailed image prompts for AI image generation tools.',
     category: 'ai',
-    tags: ['ai', 'image', 'generate'],
-    isPremium: true,
+    tags: ['ai', 'image', 'generate', 'prompt'],
+    isFeatured: true,
   },
   {
     slug: 'ai-code-generator',
     name: 'AI Code Generator',
-    shortDescription: 'Generate code snippets.',
+    shortDescription: 'Generate code snippets in various programming languages.',
     category: 'ai',
-    tags: ['ai', 'code', 'generate'],
+    tags: ['ai', 'code', 'generate', 'programming'],
+    isFeatured: true,
   },
   {
     slug: 'ai-resume-optimizer',
@@ -448,9 +504,10 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'ai-email-writer',
     name: 'AI Email Writer',
-    shortDescription: 'Write professional emails.',
+    shortDescription: 'Generate professional emails with AI assistance for any purpose.',
     category: 'ai',
-    tags: ['ai', 'email', 'writing'],
+    tags: ['ai', 'email', 'writing', 'professional'],
+    isFeatured: true,
   },
   {
     slug: 'ai-voice-cloner',
@@ -546,9 +603,10 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'facebook-cover',
     name: 'Facebook Cover Maker',
-    shortDescription: 'Perfectly sized FB cover images.',
+    shortDescription: 'Create stunning Facebook cover photos with custom text, backgrounds, and layouts.',
     category: 'social',
-    tags: ['facebook', 'cover', 'design'],
+    tags: ['facebook', 'cover', 'design', 'social media'],
+    isFeatured: true,
   },
   {
     slug: 'linkedin-analyzer',
@@ -629,6 +687,14 @@ export const TOOLS: ToolMeta[] = [
     shortDescription: 'Make favicons for websites.',
     category: 'developer',
     tags: ['favicon', 'icon', 'website'],
+  },
+  {
+    slug: 'excel-formula-tester',
+    name: 'Excel Formula Tester',
+    shortDescription: 'Test Excel formulas in a safe sandbox environment with real-time validation.',
+    category: 'developer',
+    tags: ['excel', 'formula', 'test', 'validation', 'spreadsheet'],
+    isFeatured: true,
   },
 
   // Calculators & Converters
@@ -768,11 +834,12 @@ export const TOOLS: ToolMeta[] = [
     tags: ['calendar', 'printable', 'generate'],
   },
   {
-    slug: 'countdown-timer',
+    slug: 'event-countdown-timer',
     name: 'Event Countdown Timer',
-    shortDescription: 'Show time left until an event.',
+    shortDescription: 'Create and manage countdown timers for important events with notifications.',
     category: 'productivity',
-    tags: ['countdown', 'timer', 'event'],
+    tags: ['countdown', 'timer', 'event', 'reminder', 'schedule'],
+    isFeatured: true,
   },
 
   // E-Commerce & Business Tools
@@ -821,9 +888,10 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'price-tracker',
     name: 'Currency Price Tracker',
-    shortDescription: 'Track product price changes.',
+    shortDescription: 'Track cryptocurrency and forex prices in real-time with alerts and portfolio management.',
     category: 'ecommerce',
-    tags: ['price', 'track', 'monitor'],
+    tags: ['price', 'track', 'monitor', 'crypto', 'forex', 'currency'],
+    isFeatured: true,
   },
   {
     slug: 'product-description',
@@ -835,9 +903,9 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'bulk-resizer',
     name: 'Bulk Image Resizer',
-    shortDescription: 'Resize product images for stores.',
+    shortDescription: 'Resize multiple images at once with customizable dimensions, quality, and format options.',
     category: 'ecommerce',
-    tags: ['bulk', 'resize', 'images'],
+    tags: ['bulk', 'resize', 'images', 'batch'],
   },
   {
     slug: 'barcode-scanner',
@@ -865,9 +933,9 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'anonymous-link',
     name: 'Anonymous Link Opener',
-    shortDescription: 'Open links without revealing your IP.',
+    shortDescription: 'Open links without revealing your IP address using secure proxy services. Protect your privacy while browsing.',
     category: 'privacy',
-    tags: ['anonymous', 'link', 'privacy'],
+    tags: ['anonymous', 'link', 'privacy', 'proxy'],
   },
   {
     slug: 'screenshot-blurrer',
@@ -900,9 +968,9 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'adblocker-test',
     name: 'Ad Blocker Test Tool',
-    shortDescription: 'Test if a browser ad blocker is working.',
+    shortDescription: 'Test if your browser has an ad blocker active and see which detection methods work.',
     category: 'privacy',
-    tags: ['adblocker', 'test', 'privacy'],
+    tags: ['adblocker', 'test', 'privacy', 'detection'],
   },
   {
     slug: 'https-checker',
@@ -923,16 +991,23 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'apk-downloader',
     name: 'APK Downloader',
-    shortDescription: 'Download Android app APKs.',
+    shortDescription: 'Search and download Android APK files from trusted sources. Find apps that aren\'t available on Google Play Store.',
     category: 'mobile',
-    tags: ['apk', 'android', 'download'],
+    tags: ['apk', 'android', 'download', 'search'],
   },
   {
     slug: 'app-icon-resizer',
     name: 'App Icon Resizer',
-    shortDescription: 'Create icons for Android & iOS sizes.',
+    shortDescription: 'Create app icons for iOS, Android, and web platforms in all required sizes.',
     category: 'mobile',
-    tags: ['icon', 'resize', 'app'],
+    tags: ['icon', 'resize', 'app', 'ios', 'android', 'web'],
+  },
+  {
+    slug: 'app-store-description-generator',
+    name: 'App Store Description Generator',
+    shortDescription: 'Create compelling app store descriptions that convert visitors into downloads.',
+    category: 'mobile',
+    tags: ['app', 'description', 'store', 'seo', 'marketing'],
   },
   {
     slug: 'push-tester',
@@ -965,9 +1040,9 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'battery-checker',
     name: 'Battery Health Checker (Web)',
-    shortDescription: 'Check device battery info.',
+    shortDescription: 'Check device battery information, charging status, and get health recommendations.',
     category: 'mobile',
-    tags: ['battery', 'health', 'check'],
+    tags: ['battery', 'health', 'check', 'device'],
   },
   {
     slug: 'touch-test',
@@ -979,9 +1054,9 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'permission-checker',
     name: 'Android Permission Checker',
-    shortDescription: 'See permissions from APKs.',
+    shortDescription: 'Analyze APK files to understand what permissions an Android app requests and their security implications.',
     category: 'mobile',
-    tags: ['android', 'permission', 'check'],
+    tags: ['android', 'permission', 'check', 'security'],
   },
   {
     slug: 'vcard-generator',
@@ -1051,9 +1126,9 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'birthday-countdown',
     name: 'Birthday Countdown Tool',
-    shortDescription: 'Count days until birthday.',
+    shortDescription: 'Count days, hours, minutes, and seconds until your next birthday with fun facts and saved birthdays.',
     category: 'fun',
-    tags: ['birthday', 'countdown', 'days'],
+    tags: ['birthday', 'countdown', 'days', 'timer'],
   },
   {
     slug: 'fortune-cookie',
@@ -1085,13 +1160,7 @@ export const TOOLS: ToolMeta[] = [
     category: 'file',
     tags: ['rar', 'extract', 'unrar'],
   },
-  {
-    slug: 'file-renamer',
-    name: 'File Renamer',
-    shortDescription: 'Rename multiple files in bulk.',
-    category: 'file',
-    tags: ['file', 'rename', 'bulk'],
-  },
+
   {
     slug: 'file-splitter',
     name: 'File Splitter & Joiner',
@@ -1102,17 +1171,32 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'duplicate-finder',
     name: 'Duplicate File Finder',
-    shortDescription: 'Detect duplicate files in uploads.',
+    shortDescription: 'Detect duplicate files by content, name, or size to free up storage space.',
     category: 'file',
-    tags: ['duplicate', 'file', 'find'],
+    tags: ['duplicate', 'file', 'find', 'storage', 'cleanup'],
   },
   {
-    slug: 'file-converter',
-    name: 'File Converter',
-    shortDescription: 'Convert between common file formats.',
+    slug: 'ebook-converter',
+    name: 'eBook Converter',
+    shortDescription: 'Convert between EPUB, MOBI, PDF, TXT, and HTML formats with customizable settings.',
     category: 'file',
-    tags: ['file', 'convert', 'format'],
+    tags: ['ebook', 'convert', 'epub', 'mobi', 'pdf', 'format'],
   },
+  {
+    slug: 'dropshipping-profit-calculator',
+    name: 'Dropshipping Profit Calculator',
+    shortDescription: 'Calculate profit margins, ROI, and break-even points for dropshipping products.',
+    category: 'business',
+    tags: ['dropshipping', 'profit', 'calculator', 'business', 'roi'],
+  },
+  {
+    slug: 'disposable-email-generator',
+    name: 'Disposable Email Generator',
+    shortDescription: 'Generate temporary email addresses for testing and privacy protection.',
+    category: 'utility',
+    tags: ['email', 'temporary', 'privacy', 'testing', 'generator'],
+  },
+
   {
     slug: 'file-transfer',
     name: 'Large File Transfer Tool',
@@ -1134,14 +1218,31 @@ export const TOOLS: ToolMeta[] = [
     category: 'file',
     tags: ['file', 'preview', 'view'],
   },
+  {
+    slug: 'file-converter',
+    name: 'File Converter',
+    shortDescription: 'Convert between common file formats with support for images, documents, videos, audio, and archives.',
+    category: 'file',
+    tags: ['file', 'convert', 'format', 'converter'],
+    isFeatured: true,
+  },
+  {
+    slug: 'file-renamer',
+    name: 'File Renamer',
+    shortDescription: 'Rename multiple files in bulk with sequential numbering, search & replace, and custom patterns.',
+    category: 'file',
+    tags: ['file', 'rename', 'bulk', 'batch', 'organize'],
+    isFeatured: true,
+  },
 
   // Data & Analytics Tools
   {
     slug: 'csv-to-json',
     name: 'CSV to JSON Converter',
-    shortDescription: 'Transform CSV into JSON format.',
+    shortDescription: 'Transform CSV into JSON format with customizable options and preview.',
     category: 'data',
-    tags: ['csv', 'json', 'convert'],
+    tags: ['csv', 'json', 'convert', 'data'],
+    isFeatured: true,
   },
   {
     slug: 'json-to-csv',
@@ -1160,9 +1261,10 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'data-visualizer',
     name: 'Data Visualizer',
-    shortDescription: 'Create charts and graphs from raw data.',
+    shortDescription: 'Create charts and graphs from raw data with multiple chart types and customization options.',
     category: 'data',
-    tags: ['data', 'visualize', 'chart'],
+    tags: ['data', 'visualize', 'chart', 'graph', 'analytics'],
+    isFeatured: true,
   },
   {
     slug: 'survey-builder',
@@ -1181,9 +1283,9 @@ export const TOOLS: ToolMeta[] = [
   {
     slug: 'ab-testing',
     name: 'A/B Testing Tool',
-    shortDescription: 'Compare two web versions for performance.',
+    shortDescription: 'Create and manage A/B tests to compare different versions of your content and track performance metrics.',
     category: 'data',
-    tags: ['ab', 'testing', 'compare'],
+    tags: ['ab', 'testing', 'compare', 'analytics'],
   },
   {
     slug: 'email-tracker',
@@ -1230,7 +1332,7 @@ export const TOOLS: ToolMeta[] = [
     tags: ['poster', 'design', 'print'],
   },
   {
-    slug: 'business-card',
+    slug: 'business-card-maker',
     name: 'Business Card Maker',
     shortDescription: 'Make digital and printable business cards.',
     category: 'design',
@@ -1323,6 +1425,14 @@ export const TOOLS: ToolMeta[] = [
     shortDescription: 'Translate text between multiple languages with pronunciation and copy features.',
     category: 'language',
     tags: ['translate', 'language', 'text', 'multilingual'],
+    isFeatured: true,
+  },
+  {
+    slug: 'emoji-translator',
+    name: 'Emoji Translator',
+    shortDescription: 'Translate text to emojis and vice versa with smart language detection.',
+    category: 'language',
+    tags: ['emoji', 'translation', 'language', 'text', 'convert'],
     isFeatured: true,
   },
   {
@@ -1426,5 +1536,32 @@ export const TOOLS: ToolMeta[] = [
     shortDescription: 'Store and reuse copied text snippets.',
     category: 'utility',
     tags: ['clipboard', 'manage', 'text'],
+  },
+
+  // Design & Creative Tools
+  {
+    slug: 'flyer-maker',
+    name: 'Flyer Maker',
+    shortDescription: 'Create professional flyers with customizable templates.',
+    category: 'design',
+    tags: ['flyer', 'design', 'template'],
+  },
+
+  // Typography & Fonts Tools
+  {
+    slug: 'font-preview',
+    name: 'Font Preview Tool',
+    shortDescription: 'Preview and compare different fonts with customizable text.',
+    category: 'typography',
+    tags: ['font', 'preview', 'typography'],
+  },
+
+  // Fun & Engagement Tools
+  {
+    slug: 'fortune-cookie',
+    name: 'Fortune Cookie Generator',
+    shortDescription: 'Generate random fortunes with lucky numbers.',
+    category: 'fun',
+    tags: ['fortune', 'random', 'fun'],
   },
 ];

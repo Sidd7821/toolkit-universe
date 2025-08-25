@@ -8,6 +8,10 @@ const components: Record<string, ReturnType<typeof lazy>> = {
   "word-counter": lazy(() => import("@/tools/WordCounter")),
   "json-formatter": lazy(() => import("@/tools/JsonFormatter")),
   "ai-assist": lazy(() => import("@/tools/AIAssist")),
+  "ai-article-writer": lazy(() => import("@/tools/AIArticleWriter")),
+  "ai-code-generator": lazy(() => import("@/tools/AICodeGenerator")),
+  "ai-email-writer": lazy(() => import("@/tools/AIEmailWriter")),
+  "ai-image-generator": lazy(() => import("@/tools/AIImageGenerator")),
   "image-compressor": lazy(() => import("@/tools/ImageCompressor")),
   "image-converter": lazy(() => import("@/tools/ImageFormatConverter")),
   "image-cropper": lazy(() => import("@/tools/ImageCropper")),
@@ -81,6 +85,59 @@ const components: Record<string, ReturnType<typeof lazy>> = {
   "readability-checker": lazy(() => import("@/tools/ReadabilityChecker")),
   "language-translator": lazy(() => import("@/tools/LanguageTranslator")),
   "dictionary-thesaurus": lazy(() => import("@/tools/DictionaryThesaurus")),
+  "emoji-translator": lazy(() => import("@/tools/EmojiTranslator")),
+  // Data & Analytics tools
+  "csv-to-json": lazy(() => import("@/tools/CSVToJSONConverter")),
+  "data-visualizer": lazy(() => import("@/tools/DataVisualizer")),
+  "ab-testing": lazy(() => import("@/tools/ABTestingTool")),
+  // E-commerce tools
+  "price-tracker": lazy(() => import("@/tools/CurrencyPriceTracker")),
+  "dropshipping-profit-calculator": lazy(() => import("@/tools/DropshippingProfitCalculator")),
+  // Privacy & Safety tools
+  "adblocker-test": lazy(() => import("@/tools/AdBlockerTestTool")),
+  "disposable-email-generator": lazy(() => import("@/tools/DisposableEmailGenerator")),
+  // Mobile & App tools
+  "permission-checker": lazy(() => import("@/tools/AndroidPermissionChecker")),
+  "apk-downloader": lazy(() => import("@/tools/APKDownloader")),
+  "app-icon-resizer": lazy(() => import("@/tools/AppIconResizer")),
+  "app-store-description-generator": lazy(() => import("@/tools/AppStoreDescriptionGenerator")),
+  // Audio tools
+  "audio-cutter": lazy(() => import("@/tools/AudioCutter")),
+  "audio-joiner": lazy(() => import("@/tools/AudioJoiner")),
+  "noise-remover": lazy(() => import("@/tools/AudioNoiseRemover")),
+  // Mobile tools
+  "battery-checker": lazy(() => import("@/tools/BatteryHealthChecker")),
+  // Fun tools
+  "birthday-countdown": lazy(() => import("@/tools/BirthdayCountdownTool")),
+  // E-commerce tools
+  "bulk-resizer": lazy(() => import("@/tools/BulkImageResizer")),
+  // Privacy tools
+  "anonymous-link": lazy(() => import("@/tools/AnonymousLinkOpener")),
+  // New tools
+  "business-card-maker": lazy(() => import("@/tools/BusinessCardMaker")),
+  "calendar-generator": lazy(() => import("@/tools/CalendarGenerator")),
+  "collage-maker": lazy(() => import("@/tools/CollageMaker")),
+  "compatibility-calculator": lazy(() => import("@/tools/CoupleCompatibilityCalculator")),
+  "event-countdown-timer": lazy(() => import("@/tools/EventCountdownTimer")),
+  "excel-formula-tester": lazy(() => import("@/tools/ExcelFormulaTester")),
+  // Our six new tools
+  "gradient-generator": lazy(() => import("@/tools/GradientGenerator")),
+  "https-checker": lazy(() => import("@/tools/HttpsChecker")),
+  "heatmap-generator": lazy(() => import("@/tools/HeatmapGenerator")),
+  "instagram-hashtag-generator": lazy(() => import("@/tools/InstagramHashtagGenerator")),
+  "instagram-story-templates": lazy(() => import("@/tools/InstagramStoryTemplates")),
+  "invoice-generator": lazy(() => import("@/tools/InvoiceGenerator")),
+  // File management tools
+  "duplicate-finder": lazy(() => import("@/tools/DuplicateFileFinder")),
+  "ebook-converter": lazy(() => import("@/tools/EbookConverter")),
+  "facebook-cover": lazy(() => import("@/tools/FacebookCoverMaker")),
+  "file-converter": lazy(() => import("@/tools/FileConverter")),
+  "file-previewer": lazy(() => import("@/tools/FilePreviewer")),
+  "file-renamer": lazy(() => import("@/tools/FileRenamer")),
+  "file-splitter-joiner": lazy(() => import("@/tools/FileSplitterJoiner")),
+  "flyer-maker": lazy(() => import("@/tools/FlyerMaker")),
+  "font-preview": lazy(() => import("@/tools/FontPreviewTool")),
+  "fortune-cookie": lazy(() => import("@/tools/FortuneCookieGenerator")),
 };
 
 const Fallback = () => (
